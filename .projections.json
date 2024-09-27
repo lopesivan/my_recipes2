@@ -1,0 +1,12 @@
+{
+  "./.projections.json": { "type": "dit" },
+
+  "README.md": {
+    "type": "doc"
+  },
+
+  "*.rb": {
+    "type": "ruby",
+    "skeleton": "my_recipes"
+  }
+}

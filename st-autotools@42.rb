@@ -30,8 +30,7 @@ class StAutotoolsAT42 < Formula
       system "./gera-opcao.sh", "enable", "debug", '"Ativa modo de depuração"'
       system "sh", "autogen.sh"
       system "./configure", "--prefix=#{prefix}"
-      system "make", "CC=/bin/c99"
-      #system 'make', "PREFIX=#{prefix}", 'install'
+      system "make", "CC=/bin/c99", 'install'
     end
   test do
     system "false"

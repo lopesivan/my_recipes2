@@ -6,25 +6,29 @@ class StAutotoolsAT42 < Formula
   desc "st is a simple terminal implementation for X."
   homepage "https://github.com/lopesivan/st-autotools"
   url "https://github.com/lopesivan/st-autotools.git",
-    revision: "c68401fde9c25b94e72ca7f68d1513dc4349713a"
+    revision: "9c32113c8db90db10fa7e29b087515e2b2c776b6"
   version "1.0.1"
 #  head "https://github.com/lopesivan/st-autotools",
 #    branch: "main",
 #    using: :git
   license "GPL-3.0-or-later"
   patch do
-    url 'https://raw.githubusercontent.com/lopesivan/my_patches/main/st-autotools/st-autotools-custom-c6774ff2465faecadf91d5acaa6d143199dab8fe-20250805.diff'
-    sha256 '27dc447edcc69331cb202c65ebf635d320a4f61fe1efe9913c1b4802eea1a243'
+    url 'https://raw.githubusercontent.com/lopesivan/my_patches/main/st-autotools/st-autotools-custom-3104e1876c087da58d4e36d02a03a7da5dc64f63-20250805.diff'
+    sha256 '5d83c036f7914ada9b63099ceb94436f861fbf0cf8365f79596bd748d36ca870'
   end
-  def install
-    system './gera-opcao.sh', 'enable', 'debug', '"Ativa modo de depuração"'
-    system 'sh', './autogen.sh'
-    system './configure'
-    system 'make'
-    #system 'make', "PREFIX=#{prefix}", 'install'
-  end
+    def install
+      # Força o uso do pkg-config do sistema
+      ENV["PKG_CONFIG"] = "/usr/bin/pkg-config"
   
+      # Força o path onde estão os .pc files
+      ENV["PKG_CONFIG_PATH"] = "/usr/lib/x86_64-linux-gnu/pkgconfig"
   
+      system "./gera-opcao.sh", "enable", "debug", '"Ativa modo de depuração"'
+      system "sh", "autogen.sh"
+      system "./configure", "--prefix=#{prefix}"
+      system "make", "CC=/bin/c99"
+      #system 'make', "PREFIX=#{prefix}", 'install'
+    end
   test do
     system "false"
   end

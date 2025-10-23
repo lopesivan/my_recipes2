@@ -20,9 +20,9 @@ class Cppponto3d < Formula
     ]
 
     mkdir "build" do
-      system "/usr/local/bin/cmake", *args, "..", "-G", "Ninja"
-      system "/usr/bin/ninja"
-      system "/usr/bin/ninja", "install"
+      system "cmake", *args, "..", "-G", "Ninja"
+      system "ninja"
+      system "ninja", "install"
     end
   end
 

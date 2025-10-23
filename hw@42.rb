@@ -13,8 +13,8 @@ class HwAT42 < Formula
 #    using: :git
   license "GPL-3.0-or-later"
   patch do
-    url 'https://raw.githubusercontent.com/lopesivan/my_patches/main/hw/hw-custom-26e513b092a2185c9ca29bfaddc1467a5a07812c-20251023.diff'
-    sha256 '4580a46523afe71589b0ffaf13278b8306d1a2b95c7a7d990ead500f1880a131'
+    url 'https://raw.githubusercontent.com/lopesivan/my_patches/main/hw/hw-custom-2c4ca75c6a5a41054096f9d6e295864f32d3fa5a-20251023.diff'
+    sha256 '24e27386d6206f70ccba26f9f6e51e69938e3b9d0c2fc5fabe504ca8bdc08df9'
   end
   def install
     system 'cmake', '.'

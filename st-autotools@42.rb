@@ -13,8 +13,8 @@ class StAutotoolsAT42 < Formula
 #    using: :git
   license "GPL-3.0-or-later"
   patch do
-    url 'https://raw.githubusercontent.com/lopesivan/my_patches/main/st-autotools/st-autotools-custom-469ab8e14f397c6cf3dc91779be560feb8a650d3-20251023.diff'
-    sha256 '2f2fbe04b573a00bad5379274d4b8b80832efa0dca1e718eb82e06be2eb25da5'
+    url 'https://raw.githubusercontent.com/lopesivan/my_patches/main/st-autotools/st-autotools-custom-4ec7c545ead5555bfa18371ad4ecb098c7849c03-20251023.diff'
+    sha256 'df5ca4857a13452cc1a37d7305041eff0aadc572323c9c576cfb6e8444900f73'
   end
   def install
     system("aclocal", "-I", "m4", "--install")

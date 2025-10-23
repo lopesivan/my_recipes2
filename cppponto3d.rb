@@ -8,14 +8,14 @@ class Cppponto3d < Formula
   head "https://github.com/lopesivan/cppPonto3d.git", branch: "master"
 
   def install
-    ENV["CPLUS_INCLUDE_PATH"] = "/usr/include/c++/11:/usr/include/x86_64-linux-gnu/c++/11"
-    ENV["LIBRARY_PATH"] = "/usr/lib/gcc/x86_64-linux-gnu/11"
+    #ENV["CPLUS_INCLUDE_PATH"] = "/usr/include/c++/11:/usr/include/x86_64-linux-gnu/c++/11"
+    #ENV["LIBRARY_PATH"] = "/usr/lib/gcc/x86_64-linux-gnu/11"
     args = %W[
       --no-warn-unused-cli
       -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE
       -DCMAKE_BUILD_TYPE:STRING=Debug
-      -DCMAKE_C_COMPILER:FILEPATH=/usr/bin/clang
-      -DCMAKE_CXX_COMPILER:FILEPATH=/usr/bin/clang++
+      -DCMAKE_C_COMPILER:FILEPATH=clang
+      -DCMAKE_CXX_COMPILER:FILEPATH=clang++
       -DCMAKE_INSTALL_PREFIX=#{prefix}
     ]
 

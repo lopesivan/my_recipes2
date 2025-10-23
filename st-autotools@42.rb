@@ -13,25 +13,20 @@ class StAutotoolsAT42 < Formula
 #    using: :git
   license "GPL-3.0-or-later"
   patch do
-    url 'https://raw.githubusercontent.com/lopesivan/my_patches/main/st-autotools/st-autotools-custom-b892f44bc6dbe39257ddc8a0856f52518fcad8f8-20250805.diff'
-    sha256 'dc37eff9369a28b7205c8b0323f3bd31bba95fb5460162af7f3db12560177441'
+    url 'https://raw.githubusercontent.com/lopesivan/my_patches/main/st-autotools/st-autotools-custom-41de93778bc76679a94fc96ac74f10941470e655-20251023.diff'
+    sha256 '2c6f82c798436d97d0f957fba9273975e91f153b90b5b5c93fe8759d6ec5c62e'
   end
-    def install
+  def install
+    system("aclocal", "-I", "m4", "--install")
+    system("autoconf")
+    system("autoheader")
+    system("mkdir", "build-aux")
+    system("automake", "--add-missing")
   
-      ENV["PKG_CONFIG_PATH"] = [
-      Formula["freetype"].opt_lib/"pkgconfig",
-      Formula["fontconfig"].opt_lib/"pkgconfig",
-      Formula["libpng"].opt_lib/"pkgconfig",
-      Formula["zlib"].opt_lib/"pkgconfig",
-      Formula["bzip2"].opt_lib/"pkgconfig",
-      Formula["expat"].opt_lib/"pkgconfig"
-      ].join(":")
-  
-      system "./gera-opcao.sh", "enable", "debug", '"Ativa modo de depuração"'
-      system "sh", "autogen.sh"
-      system "./configure", "--prefix=#{prefix}"
-      system "make", "CC=/bin/c99", 'install'
-    end
+    #./configure
+    system("./configure", "--prefix=#{prefix}")
+    system("make", "CC=/bin/c99", "install")
+  end
   test do
     system "false"
   end

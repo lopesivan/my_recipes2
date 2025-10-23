@@ -12,10 +12,6 @@ class HwAT42 < Formula
 #    branch: "main",
 #    using: :git
   license "GPL-3.0-or-later"
-  patch do
-    url 'https://raw.githubusercontent.com/lopesivan/my_patches/main/hw/hw-custom-cdc160649dcce876a54b1f6ba67befe5777af29a-20251023.diff'
-    sha256 'd28e405c62ba176a27620b9e24485c5d75c5f417d788c7ed9e6d9f7f4f710bd0'
-  end
   def install
     #ENV["CPLUS_INCLUDE_PATH"] = "/usr/include/c++/11:/usr/include/x86_64-linux-gnu/c++/11"
     #ENV["LIBRARY_PATH"] = "/usr/lib/gcc/x86_64-linux-gnu/11"

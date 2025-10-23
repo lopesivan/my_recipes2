@@ -3,28 +3,20 @@
 # PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
 
 class HwAT42 < Formula
-  desc "O hw (Hello World) é uma ferramenta de linha de comando (CLI) criada para imprimir exemplos básicos de programas “Hello, World!” em diferentes linguagens de programação."
+  desc "Ferramenta CLI para imprimir exemplos de Hello World em diferentes linguagens"
   homepage "https://github.com/lopesivan/hw"
   url "https://github.com/lopesivan/hw.git",
-    revision: "bce43e5943d7221b095bcbdbd0d6b23c39fe64b8"
-  version "1.0.3"
-#  head "https://github.com/lopesivan/hw",
-#    branch: "main",
-#    using: :git
+      revision: "bce43e5943d7221b095bcbdbd0d6b23c39fe64b8"
   license "GPL-3.0-or-later"
+  head "https://github.com/lopesivan/hw.git", branch: "main"
+
   def install
-    #ENV["CPLUS_INCLUDE_PATH"] = "/usr/include/c++/11:/usr/include/x86_64-linux-gnu/c++/11"
-    #ENV["LIBRARY_PATH"] = "/usr/lib/gcc/x86_64-linux-gnu/11"
-    args = %W[
-      -DCMAKE_INSTALL_PREFIX=#{prefix}
-    ]
-    mkdir "build" do
-      system "/usr/local/bin/cmake", "..", *args
-      system "make"
-      system "make", "install"
-    end
+    system "cmake", "-S", ".", "-B", "build", *std_cmake_args
+    system "cmake", "--build", "build"
+    system "cmake", "--install", "build"
   end
+
   test do
-    system "false"
+    assert_match "Hello", shell_output("#{bin}/hw --help")
   end
 end

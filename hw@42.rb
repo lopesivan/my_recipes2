@@ -6,29 +6,26 @@ class HwAT42 < Formula
   desc "O hw (Hello World) é uma ferramenta de linha de comando (CLI) criada para imprimir exemplos básicos de programas “Hello, World!” em diferentes linguagens de programação."
   homepage "https://github.com/lopesivan/hw"
   url "https://github.com/lopesivan/hw.git",
-    revision: "26e513b092a2185c9ca29bfaddc1467a5a07812c"
-  version "1.0.2"
+    revision: "bce43e5943d7221b095bcbdbd0d6b23c39fe64b8"
+  version "1.0.3"
 #  head "https://github.com/lopesivan/hw",
 #    branch: "main",
 #    using: :git
   license "GPL-3.0-or-later"
   patch do
-    url 'https://raw.githubusercontent.com/lopesivan/my_patches/main/hw/hw-custom-8fc667e37774fe2bcc1b75d4f8864649ca4f06f0-20251023.diff'
-    sha256 'bff56369baf47079803bd13a74c3648ca7bbb22c03feae2f00ab1961173e1e67'
+    url 'https://raw.githubusercontent.com/lopesivan/my_patches/main/hw/hw-custom-cdc160649dcce876a54b1f6ba67befe5777af29a-20251023.diff'
+    sha256 'd28e405c62ba176a27620b9e24485c5d75c5f417d788c7ed9e6d9f7f4f710bd0'
   end
   def install
     #ENV["CPLUS_INCLUDE_PATH"] = "/usr/include/c++/11:/usr/include/x86_64-linux-gnu/c++/11"
     #ENV["LIBRARY_PATH"] = "/usr/lib/gcc/x86_64-linux-gnu/11"
     args = %W[
-      --no-warn-unused-cli
-      -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE
       -DCMAKE_INSTALL_PREFIX=#{prefix}
     ]
-  
     mkdir "build" do
-      system "/usr/local/bin/cmake", *args, "..", "-G", "Ninja"
-      system "/usr/bin/ninja"
-      system "/usr/bin/ninja", "install"
+      system "/usr/local/bin/cmake", "..", *args
+      system "make"
+      system "make", "install"
     end
   end
   test do

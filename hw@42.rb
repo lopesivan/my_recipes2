@@ -13,8 +13,8 @@ class HwAT42 < Formula
 #    using: :git
   license "GPL-3.0-or-later"
   patch do
-    url 'https://raw.githubusercontent.com/lopesivan/my_patches/main/hw/hw-custom-35e227f25cd0e90b03edc280f0392e9ff6048c0f-20251023.diff'
-    sha256 '6ca7444de16c8e03b0f120465d880a6b4544dfc09ddabc748af8f364b47ae730'
+    url 'https://raw.githubusercontent.com/lopesivan/my_patches/main/hw/hw-custom-0ab29c8b6dfb462092dd02e76808747838c1e62c-20251023.diff'
+    sha256 '1572ba298e5a194cbf1990cfe2c3da05186671f14e40f179b9745ce4caeb0bb7'
   end
   def install
     args = %W[
